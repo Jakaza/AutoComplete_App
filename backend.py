@@ -41,7 +41,7 @@ class AutoComplete:
             else:
                if words_map[current_word][next_word] > predictions[current_word]['completion_count']:
                 predictions[current_word]['completion_word'] = next_word
-                predictions[curr_word]['completion_count'] = words_map[curr_word][next_word]
+                predictions[current_word]['completion_count'] = words_map[current_word][next_word]
 
         
         words_map = json.dumps(words_map)
@@ -52,7 +52,14 @@ class AutoComplete:
 
         return("training complete")
     
-    
+    def predict(self, word):
+       cur = self.conn.cursor()
+
+       predictions = cur.execute("SELECT value FROM WordPrediction WHERE name='predictions'").fetchone()[0]
+       predictions = json.loads(predictions)
+       completion_word = predictions[word.lower()]['completion_word']
+
+       return completion_word
     
 
 autoComplete = AutoComplete()
@@ -72,6 +79,8 @@ autoComplete.train("Can you please close the door gently?")
 autoComplete.train("Let’s open the window and get some fresh air.")
 autoComplete.train("I’m very hungry. Can I eat something, please?")
 autoComplete.train("Close the door.")
+
+print(autoComplete.predict("family"))
 
 
 
