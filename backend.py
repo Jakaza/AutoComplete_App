@@ -62,27 +62,6 @@ class AutoComplete:
        return completion_word
     
 
-autoComplete = AutoComplete()
-
-autoComplete.train("Good morning! I hope you slept well.")
-autoComplete.train("Good afternoon! How has your day been so far?")
-autoComplete.train("Good night! Sweet dreams and sleep tight.")
-autoComplete.train("How are you?")
-autoComplete.train("I’m fine, thank you.")
-autoComplete.train("What is your name?")
-autoComplete.train("It’s nice to meet you. Let’s be friends!")
-
-autoComplete.train("This is my bedroom where I sleep and play.")
-autoComplete.train("I love my family because they take care of me.")
-autoComplete.train("Please sit down.")
-autoComplete.train("Can you please close the door gently?")
-autoComplete.train("Let’s open the window and get some fresh air.")
-autoComplete.train("I’m very hungry. Can I eat something, please?")
-autoComplete.train("Close the door.")
-
-print(autoComplete.predict("family"))
-
-
 
 
 
